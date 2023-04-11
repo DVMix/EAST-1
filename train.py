@@ -22,7 +22,7 @@ def train(train_img_path, train_gt_path, pths_path, batch_size, lr, num_workers,
     criterion = Loss()
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     model = EAST()
-    start_epoch_index = 135
+    start_epoch_index = 165
     checkpoint_path = os.path.join(pths_path, f'model_epoch_{start_epoch_index}.pth')
     checkpoint = torch.load(checkpoint_path)
     model.load_state_dict(checkpoint)
@@ -74,9 +74,8 @@ def train(train_img_path, train_gt_path, pths_path, batch_size, lr, num_workers,
 if __name__ == '__main__':
     # train_img_path = os.path.abspath('../data/icdar2015/ic15_textdet_train_img')
     # train_gt_path = os.path.abspath('../data/icdar2015/ic15_textdet_train_gt')
-    train_img_path = os.path.abspath('../data/keras_generator/dataset/train')
-    train_gt_path = os.path.abspath('../data/keras_generator/dataset/train_gt')
-    '../data/keras_generator/dataset'
+    train_img_path = os.path.abspath('../data/dataset/icdar2015_format/train')
+    train_gt_path = os.path.abspath('../data/dataset/icdar2015_format/train_gt')
     pths_path = './pths'
     batch_size = 16
     lr = 1e-3
